@@ -68,7 +68,9 @@
   video{width:100%; max-width:440px; height:auto; aspect-ratio:5/6; object-fit:cover; border-radius:12px; border:1px solid var(--line); display:block; background:#000}
   figcaption{color:var(--muted); font-size:.88rem; margin-top:8px; text-align:center}
   .cols{display:grid; grid-template-columns:1fr 1fr; gap:40px}
-  .closing{display:flex; flex-direction:column; align-items:center; margin-top:56px}
+  .closing{display:block; margin:20px 0 0}
+  .closing video{max-width:100%}
+  .closing figcaption{text-align:left}
   .langs{font-size:.98rem}
   .langs span{color:var(--muted)}
   footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:.86rem}
@@ -172,18 +174,17 @@
       </div>
       <div>
         <p><strong>Music</strong> was the longest habit: classical piano from childhood to the sixth degree of the Portuguese official course in 2023, and grade 5 of the Associated Board of the Royal Schools of Music in 2020. I have stopped playing for now; the recording below is from a recital.</p>
+        <figure class="closing">
+          <video controls preload="none" playsinline poster="piano_poster.jpg" width="480" height="576">
+            <source src="piano_recital_24s.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Twenty-four seconds of a recital.</figcaption>
+        </figure>
       </div>
     </div>
     <p style="margin-top:22px"><strong>Travel and tea.</strong> I like places where I do not yet speak the language, and I plan trips around markets and meals rather than monuments. The related obsession is tea: green and oolong, brewed in a gaiwan, where I will happily spend an afternoon on the difference between two infusions of the same leaf, which is the cheapest way I know to spend three hours on a single variable.</p>
   </section>
-
-  <figure class="closing">
-    <video controls preload="none" playsinline poster="piano_poster.jpg" width="480" height="576">
-      <source src="piano_recital_24s.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <figcaption>Twenty-four seconds of a recital, mostly for the sound of the room.</figcaption>
-  </figure>
 
   <footer>
     <p>Duarte Mateus &middot; Copenhagen &middot; <a href="mailto:duartecmateus@gmail.com">duartecmateus@gmail.com</a></p>
