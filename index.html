@@ -1,12 +1,190 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>My GitHub Page</title>
-   </head>
-   <body>
-       <h1>Welcome to My GitHub Page</h1>
-       <p>This is my personal homepage hosted on GitHub Pages.</p>
-   </body>
-   </html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duarte Mateus</title>
+<meta name="description" content="Duarte Mateus, MSc student in Quantum Information Science at the University of Copenhagen. Error-correcting codes, evaluation, languages and piano.">
+<meta property="og:title" content="Duarte Mateus">
+<meta property="og:description" content="Error-correcting codes, evaluation, languages and piano.">
+<meta property="og:image" content="portrait.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a00fe'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='white' text-anchor='middle'%3EDM%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#fcfcfa; --card:#ffffff; --ink:#17171a; --muted:#6b6b73;
+    --line:#e6e6e0; --accent:#1b1bd6; --accent-soft:#eeeeff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12120f; --card:#191914; --ink:#eceae3; --muted:#a2a099;
+      --line:#2c2c26; --accent:#a6a6ff; --accent-soft:#20203a;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:400 1.02rem/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-kerning:normal; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px; margin:0 auto; padding:56px 24px 80px}
+  h1,h2,h3{font-family:Georgia,"Iowan Old Style","Times New Roman",serif; font-weight:600; letter-spacing:-.01em}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  header .name{font-size:clamp(2.1rem,5vw,2.9rem); margin:0 0 6px}
+  header .tagline{color:var(--muted); margin:0; max-width:52ch}
+  .links{margin:18px 0 0; font-size:.95rem; display:flex; flex-wrap:wrap; gap:8px 18px}
+  .links a{border-bottom:1px solid var(--line)}
+  .links a:hover{border-bottom-color:var(--accent)}
+  section{margin-top:52px}
+  h2{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; margin:0 0 14px;
+    display:flex; align-items:center; gap:12px;
+  }
+  h2::after{content:""; flex:1; height:1px; background:var(--line)}
+  .intro{display:grid; grid-template-columns:210px 1fr; gap:30px; align-items:start; margin-top:34px}
+  .intro img{width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; object-position:50% 35%;
+    border-radius:10px; border:1px solid var(--line); filter:saturate(.94)}
+  .intro p{margin:0 0 12px}
+  .intro p:last-child{margin-bottom:0}
+  .lede{font-size:1.12rem}
+  dl{margin:0; display:grid; grid-template-columns:150px 1fr; gap:10px 22px; font-size:.98rem}
+  dt{color:var(--muted)}
+  dd{margin:0}
+  .item{margin-bottom:22px}
+  .item:last-child{margin-bottom:0}
+  .item .t{display:block; font-weight:600}
+  .item .s{display:block; color:var(--muted); font-size:.94rem; margin-top:2px}
+  .item p{margin:6px 0 0}
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px}
+  .card .t{font-weight:600; display:block}
+  .card .s{color:var(--muted); font-size:.9rem; display:block; margin:2px 0 8px}
+  .card p{margin:0; font-size:.95rem}
+  figure{margin:26px 0 0}
+  video{width:100%; max-width:380px; height:auto; aspect-ratio:5/6; object-fit:cover; border-radius:12px; border:1px solid var(--line); display:block; background:#000}
+  figcaption{color:var(--muted); font-size:.88rem; margin-top:8px}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:32px}
+  .langs{font-size:.98rem}
+  .langs span{color:var(--muted)}
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:.86rem}
+  @media (max-width:640px){
+    .wrap{padding:36px 20px 64px}
+    .intro{grid-template-columns:1fr; gap:20px}
+    .intro img{max-width:230px}
+    dl{grid-template-columns:1fr; gap:2px 0}
+    dt{margin-top:10px}
+    .cards,.cols{grid-template-columns:1fr; gap:14px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1 class="name">Duarte Mateus</h1>
+    <p class="tagline">MSc student in Quantum Information Science at the University of Copenhagen. I work on error-correcting codes, I measure whether things actually work, and I spend the rest of my time on languages and the piano.</p>
+    <p class="links">
+      <a href="mailto:duartecmateus@gmail.com">email</a>
+      <a href="https://github.com/duartecmateus">github</a>
+      <a href="https://linkedin.com/in/duarte-mateus-8440b5340">linkedin</a>
+    </p>
+  </header>
+
+  <div class="intro">
+    <img src="portrait.jpg" alt="Duarte Mateus, photographed in a city street" width="480" height="600">
+    <div>
+      <p class="lede">I study how to make noisy things agree. In practice that means decoding error-correcting codes fast enough for quantum key distribution, and building the tests that decide whether a system is as good as its author says.</p>
+      <p>I came to this from mathematics: a BSc at FCUL in Lisbon, an MSc in Copenhagen, and since 2025 a research collaboration with the HPCAS group at INESC-ID. What I enjoy is the moment a result stops being plausible and becomes checked.</p>
+      <p>Outside the lab I am learning Danish and Mandarin, and I play classical piano, which is the oldest and least efficient of these three practices.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>What I work on</h2>
+    <div class="item">
+      <span class="t">Error correction for quantum key distribution</span>
+      <p>LDPC codes over Galois fields designed for burst errors, with a decoder that solves a structured linear system instead of running belief propagation. The decoding is in the complexity class NC, so it maps onto GPUs: the same algorithm runs on Apple Metal and NVIDIA CUDA, and the GPU version is up to 136 times faster than the sequential C reference on a 4500 × 6000 system.</p>
+    </div>
+    <div class="item">
+      <span class="t">Evaluation before claims</span>
+      <p>Most of my work is measurement. Inject errors with known ground truth, sweep the error rate, record failure statistics, runtime and throughput, and repeat everything on three execution backends so that a result belongs to the algorithm and not to one machine.</p>
+    </div>
+    <div class="item">
+      <span class="t">Web and interface work</span>
+      <p>A browser game built with two colleagues in plain HTML, CSS and JavaScript, where I wrote the accounts, the login and edit-account flows, the local persistence and the history and leaderboard pages. It taught me that the interesting part of an interface is what it tells you when something fails.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <dl>
+      <dt>2026&ndash;2028</dt>
+      <dd><strong>MSc in Quantum Information Science</strong>, University of Copenhagen, jointly with DTU. Intro to Quantum Information Science (NFYK23002U) and Intro to Quantum Computing (NMAK23007U) completed; thesis in progress.</dd>
+      <dt>2023&ndash;2026</dt>
+      <dd><strong>BSc in Mathematics, minor in Informatics</strong>, FCUL, Universidade de Lisboa. 16.4/20, GPA 80.4/100, 180 ECTS. Courses that mattered most here: Coding Theory, Algebra I and II, Discrete Mathematics, Numerical Analysis, Algorithms and Data Structures, Operating Systems, Computer Networks.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+    <div class="item">
+      <span class="t">A Fast Parallel Decoder for LDPC Codes Suitable for Burst Errors in QKD Reconciliation</span>
+      <span class="s">IEEE Information Theory Workshop (ITW) 2025, Sydney &middot; September 2025 &middot; presented at the workshop</span>
+      <p>Uniform LDPC codes over Galois fields for the reconciliation step of QKD, with a parallel decoder that trades belief propagation for exact linear algebra, and a Las Vegas extension for the high-noise regime.</p>
+    </div>
+    <div class="item">
+      <span class="t">A Parallel LDPC Decoder for Error Reconciliation in Quantum Key Distribution</span>
+      <span class="s">Extended journal manuscript, in preparation</span>
+      <p>The journal version adds the full construction of the codes, the syndrome analysis with proofs, the matrix generators and the complete sequential and GPU benchmarks over four fields. It also makes the short-block case: the evaluation runs on 2000-bit frames, where belief propagation normally needs long codewords.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Code</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="t"><a href="https://github.com/duartecmateus/LDPCuniform">LDPCuniform</a></span>
+        <span class="s">C, Metal, CUDA</span>
+        <p>The decoders, matrix generators and benchmark harnesses behind both papers, with build instructions for the CPU, Apple and NVIDIA backends.</p>
+      </div>
+      <div class="card">
+        <span class="t"><a href="https://github.com/duartecmateus/Proj_IWT">Proj_IWT</a></span>
+        <span class="s">HTML, CSS, JavaScript</span>
+        <p>A match-three browser game with real accounts: sign-up, login, edit-account, a local leaderboard and a history page with per-player statistics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Outside the lab</h2>
+    <div class="cols">
+      <div>
+        <p class="langs"><strong>Portuguese</strong> <span>native</span><br>
+        <strong>English</strong> <span>full professional proficiency, TOEFL 103/120</span><br>
+        <strong>Danish</strong> <span>studying, so I can read the signage and the news</span><br>
+        <strong>Mandarin Chinese</strong> <span>HSK 4</span></p>
+        <p>Two languages at the same time, one for the city I live in and one for a family of scripts I find beautiful. The Danish is younger and braver; the Mandarin has a certificate and much less conversation.</p>
+      </div>
+      <div>
+        <p><strong>Music</strong> is the longest habit: classical piano since childhood, sixth degree of the Portuguese official course in 2023 and grade 5 of the Associated Board of the Royal Schools of Music in 2020. The recording below is from a recital.</p>
+      </div>
+    </div>
+    <figure>
+      <video controls preload="none" playsinline poster="piano_poster.jpg" width="480" height="576">
+        <source src="piano.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <figcaption>Twelve seconds of a recital, mostly for the sound of the room.</figcaption>
+    </figure>
+  </section>
+
+  <footer>
+    <p>Duarte Mateus &middot; Copenhagen &middot; <a href="mailto:duartecmateus@gmail.com">duartecmateus@gmail.com</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
