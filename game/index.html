@@ -1,0 +1,101 @@
+<!-- Grupo: 27 — Gabriel Lima, Miguel Moreira, Duarte Mateus.
+     Standalone demo: no accounts, no leaderboard, no history.
+     Original project: https://github.com/duartecmateus/Proj_IWT -->
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCRAMBLED — play</title>
+    <link rel="stylesheet" href="CSS/general.css">
+    <link rel="stylesheet" href="CSS/Game_style.css">
+    <link rel="stylesheet" href="CSS/game_animations.css">
+    <script type="module" src="JavaScript/comportement.js"></script>
+</head>
+<body>
+    <header>
+        <p> SCRAMBLED</p>
+        <nav>
+            <a href="../">&larr; BACK</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="description">
+            <h1 class="darkblue">LET'S GET CRACKING!</h1>
+            <p>Match those eggs and scramble your way to the top!</p>
+            <p style="font-size:.95rem;max-width:60ch;margin:10px auto 0">The no-login demo of the web technologies project: the game, without the accounts and the leaderboard, so nothing is saved.</p>
+        </div>
+
+        <section id="game_layout">
+            <div id="side_info">
+                <div id="timer-container" class="container bold darkblue">
+                    <p class="label">&#9201; TIME</p>
+                    <p class="value">0:00</p>
+                </div>
+
+                <div id="heat-container" class="container">
+                    <div class="bold white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.08366 12.0833C7.63619 12.0833 8.1661 11.8638 8.5568 11.4731C8.9475 11.0824 9.16699 10.5525 9.16699 10C9.16699 8.85 8.75033 8.33333 8.33366 7.5C7.44033 5.71417 8.14699 4.12167 10.0003 2.5C10.417 4.58333 11.667 6.58333 13.3337 7.91667C15.0003 9.25 15.8337 10.8333 15.8337 12.5C15.8337 13.266 15.6828 14.0246 15.3896 14.7323C15.0965 15.4401 14.6668 16.0831 14.1251 16.6248C13.5834 17.1665 12.9404 17.5961 12.2326 17.8893C11.5249 18.1824 10.7664 18.3333 10.0003 18.3333C9.23428 18.3333 8.47574 18.1824 7.76801 17.8893C7.06027 17.5961 6.41721 17.1665 5.87554 16.6248C5.33386 16.0831 4.90418 15.4401 4.61103 14.7323C4.31788 14.0246 4.16699 13.266 4.16699 12.5C4.16699 11.5392 4.52783 10.5883 5.00033 10C5.00033 10.5525 5.21982 11.0824 5.61052 11.4731C6.00122 11.8638 6.53112 12.0833 7.08366 12.0833Z" stroke="white" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="label">HEAT LEVEL</span>
+                    </div>
+                    <div id="heat-meter">
+                        <span class="heat_bar_seg off"></span>
+                        <span class="heat_bar_seg off"></span>
+                        <span class="heat_bar_seg off"></span>
+                        <span class="heat_bar_seg off"></span>
+                        <span class="heat_bar_seg off"></span>
+                    </div>
+                    <span class="white label"> Don't overcook!</span>
+                </div>
+
+                <div id="score-container" class="container darkblue bold">
+                    <p class="label">SCORE</p>
+                    <p class="value" id="score">0</p>
+                </div>
+
+                <div id="eggs_card" class="container">
+                    <p class="darkblue bold label">EGGS SCRAMBLED</p>
+                    <div class="eggs_count">
+                        <span class="big" id="eggsCount">0</span>
+                    </div>
+                    <div class="eggs_bar_bg">
+                        <div class="eggs_bar_fill" id="eggsBar"></div>
+                    </div>
+                    <div class="hint" id="eggsHint">100 eggs to go!</div>
+                </div>
+
+                <div id="btn-container">
+                    <button id="btn_restart" onclick="window.location.href='./index.html'">&#8634; RESTART</button>
+                    <button id="btn_quit" onclick="window.location.href='../'">&#10005; QUIT GAME</button>
+                </div>
+                <button id="btn_hint" disabled class="hint-cooldown">HINT (-5)</button>
+            </div>
+
+            <div class="game-board">
+                <div class="game_grid">
+                    <div class="pieces">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tip">
+            <div id="Tip_container">
+                <span id="tip" class="orange">Remember:</span>
+                <span class="darkblue">Match 3 or more eggs to crack 'em and score big!</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Project by Gabriel Lima, Miguel Moreira and Duarte Mateus, 2026. No eggs were harmed in the making of this game.</p>
+        <p><a href="https://github.com/duartecmateus/Proj_IWT">source on GitHub</a></p>
+    </footer>
+
+</body>
+</html>

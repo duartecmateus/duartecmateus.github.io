@@ -1,0 +1,427 @@
+/* Grupo: 27, Número: 62796, Nome: Gabriel Lima, PL: 21 */
+/* Grupo: 27, Número: 59712, Nome: Miguel Moreira, PL: 21 */
+/* Grupo: 27, Número: 62019, Nome: Duarte Matheus, PL: 21  */
+main{
+  background: antiquewhite;
+  margin-top: 30px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#description {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.darkblue {
+  color: darkblue;
+}
+
+.orange{
+  color: #CC4520;
+}
+
+.white{
+  color: #FFF;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* .............. GAME LAYOUT ................*/
+
+#game_layout{
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  padding: 24px 24px 0 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+#side_info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 130px;
+  border-radius: 16px;
+  border: 4px solid #00296B;
+  padding: 14px 10px;
+}
+
+#timer-container {
+  justify-content: center;
+  align-items: center;
+  background: #FFF;
+}
+
+/* Heat Level */
+#heat-container {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: #CC4520;
+  gap: 15px;
+}
+
+#heat-meter{
+  display: flex;
+  width: 100%;
+  height: 32px;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.heat_bar_seg{
+  flex: 1;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.on{
+  background-color: #FFF;
+}
+
+.off{
+  background-color: #ffffff56;
+}
+
+/* Score */
+#score-container{
+  background: #fff;
+}
+
+#counter-container{
+  background: #fff;
+}
+
+/* Eggs Scrambled */
+#eggs_card {
+  background-color: #FFF;
+}
+
+.eggs_count {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 4px 0 8px;
+}
+
+.big {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f0a800;
+}
+
+.total {
+  font-size: 16px;
+  color: #aaa;
+}
+
+.eggs_bar_bg {
+  height: 10px;
+  background: #eee;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.eggs_bar_fill {
+  height: 100%;
+  width: 0%;
+  background: #f0a800;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.hint {
+  font-size: 11px;
+  color: #888;
+  margin-top: 5px;
+}
+
+#btn-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  grid-gap: 10px;
+}
+
+/* Botões */
+#btn_restart {
+  background: #1a2560;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 13px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btn_restart:hover {
+  background: #263080;
+}
+
+#btn_hint {
+    background: #FFD23F;
+    color: #1a2560;
+    border: none;
+    border-radius: 12px;
+    padding: 13px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: opacity 0.3s ease, background 0.15s;
+}
+
+#btn_hint:hover:not(:disabled) {
+  background: #f0c000;
+}
+
+#btn_hint.hint-cooldown {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+#btn_quit {
+  background: #fff;
+  color: #1a2560;
+  border: 2px solid #c8c0f0;
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s;
+}
+ 
+#btn_quit:hover {
+  background: #f0eeff;
+}
+
+/* ══════════════════════════════════════════════
+   ÁREA DO JOGO — TABULEIRO DINÂMICO
+*/
+
+.game-board {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.game_grid {
+  /* Valor por omissão; JS sobrepõe com setProperty */
+  --grid-size: 8;
+
+  width: min(800px, 98vw);
+  aspect-ratio: 1 / 1;
+  margin: auto;
+  background-color: rgb(49, 47, 47);
+  background-image:
+    linear-gradient(to right, whitesmoke 1px, transparent 1px),
+    linear-gradient(to bottom, whitesmoke 1px, transparent 1px);
+
+  /* Linhas da grelha de fundo ajustam-se automaticamente */
+  background-size:
+    calc(100% / (var(--grid-size))) calc(100% / var(--grid-size));
+
+ 
+}
+
+/* Grelha de peças — herda --grid-size do pai .game_grid */
+.pieces {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size), 1fr);
+  grid-template-rows:    repeat(var(--grid-size), 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.game_grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+#Tip_container {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  border-radius: 16px;
+  border: 3px solid #FFD23F;
+  background: rgba(255, 210, 63, 0.30);
+}
+
+#background-music {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  #game_layout{
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #side_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+
+  }
+
+  .container {
+    padding: 10px;
+    height: auto;
+  }
+
+  .label {
+    font-size: 13px;
+  }
+
+  .value {
+    font-size: 20px;
+  }
+  
+  #btn_restart,
+  #btn_hint,
+  #btn_quit {
+    font-size: 10px;
+    width: 100px;
+  }
+
+  #heat-meter {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .heat_bar_seg {
+    width: 27px;
+  }
+
+  #Tip_container {
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  #description {
+    width: min(450px, 92%);
+  }
+
+  #side_info{
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .game_grid {
+    width: min(800px, 95vw);
+  }
+  .container {
+    height: auto;
+  }
+  .label {
+    font-size: 14px;
+  }
+
+  .value {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #side_info {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .rank-number {
+    font-size: 15px;
+  }
+
+  .avatar {
+    font-size: 15px;
+  }
+
+  .player-name {
+    font-size: 10px;
+  }
+
+  .world-score {
+    font-size: 10px;
+  }
+
+  #side_info {
+    grid-template-columns: 1fr;
+  }
+
+  #Tip_container {
+    height: auto;
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+}

@@ -1,0 +1,97 @@
+/* Grupo: 27, Número: 62796, Nome: Gabriel Lima, PL: 21 */
+/* Grupo: 27, Número: 59712, Nome: Miguel Moreira, PL: 21 */
+/* Grupo: 27, Número: 62019, Nome: Duarte Matheus, PL: 21  */
+ body{
+  background-color: antiquewhite;
+  margin: 0px;
+  font-family: sans-serif;
+  /*line-height: 1.6; séra que metemos?????*/ 
+ }
+
+ main {
+    padding-top: 20px; 
+ }
+
+
+/*-----------------HEADER--------------------*/
+ header {
+  background: antiquewhite;
+  position: fixed;
+  z-index: 5;
+  top: 0px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  height: 30px;
+  border-bottom: 2px solid gray;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
+  font-weight: 700;
+  letter-spacing: -0.15px;
+ }
+
+ header > nav {
+  margin-left: auto;
+ }
+
+ header p{
+    color: #FDC500 !important;     /*MUDAR A COR PARA ALGO COM MAIS CONTRAST*/
+    border: 2px solid #00296B;
+    background-color: #00296B;
+    border-radius: 20px;
+    padding: 5px;
+    
+ }
+
+  header a{
+  text-decoration: none;
+  color: gray;
+  padding: 5px 10px;
+
+ }
+ header nav a:hover {
+  color: #FDC500;
+ }
+
+ header nav a:active {
+   color: #00296B;
+ }
+
+ .right_side{
+  font-size: 50%;
+ }
+   /*-----------------Footer--------------------*/
+
+ footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  height: 50px;
+  color: #00296B;
+  border-top: 4px solid #FDC500;
+  background: #F2E8CF;
+  font-size: small;
+}
+
+
+* {
+  font-family: sans-serif;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+
+@media screen and (max-width: 400px) {
+  header {
+    font-size: small;
+  }
+  header a{
+    padding: 5px 3px;
+  }
+}
+
+
+

@@ -1,0 +1,388 @@
+/* Grupo: 27, Número: 62796, Nome: Gabriel Lima, PL: 21 */
+/* Grupo: 27, Número: 59712, Nome: Miguel Moreira, PL: 21 */
+/* Grupo: 27, Número: 62019, Nome: Duarte Matheus, PL: 21  */
+
+/* ── CÉLULAS DA GRELHA ───────────────────────────── */
+
+/* Cada célula ocupa 1 quadrado da grelha */
+.cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: transform 0.1s ease;
+}
+
+.cell img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;          /* cliques nao reconecidos pela img, mas pela cell */
+  user-select: none;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+/* ── HOVER ───────────────────────────────────────── */
+.cell:hover img {
+  z-index: 5;
+  transform: scale(1.08);
+  transition: transform 0.15s ease;
+  filter: brightness(1.1);
+}
+
+/* ── SELECÇÃO ────────────────────────────────────── */
+.cell.selected {
+  z-index: 10;
+}
+
+.cell.selected img {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 10px #FFD23F) brightness(1.15);
+  outline: 3px solid #FFD23F;
+  outline-offset: 2px;
+  animation: pulse-selected 0.7s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-selected {
+  from { filter: drop-shadow(0 0 4px #FFD23F) brightness(1.1); }
+  to   { filter: drop-shadow(0 0 12px #ff6f09) brightness(1.2); }
+}
+
+/* ── HINTED + Cursor ────────────────────────────────────── */
+.hint-cell{
+  z-index: 10;
+}
+
+.hint-cell img{
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 6px #ff3f3f) brightness(1.1);
+    outline: 2px solid #ff0000;
+    border-radius: 4px;
+    animation: hint-pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes hint-pulse {
+  from { filter: drop-shadow(0 0 4px #ff3f3f) brightness(1.1); }
+  to   { filter: drop-shadow(0 0 16px #ff9011) brightness(1.3); }
+}
+
+.cursor {
+  z-index: 4;
+  outline: 5px solid #CC4520;
+  outline-offset: -1px;
+  border-radius: 4px;
+}
+
+/* ── MATCH NORMAL (3 em linha) ───────────────────── */
+.cell.matched {
+  animation: crack-egg 0.45s ease forwards;
+}
+
+@keyframes crack-egg {
+  0%   { transform: scale(1);    opacity: 1; }
+  30%  { transform: scale(1.25); opacity: 0.9; filter: brightness(1.5) saturate(1.5); }
+  70%  { transform: scale(0.6);  opacity: 0.5; }
+  100% { transform: scale(0);    opacity: 0; }
+}
+
+/* ── MATCH BÓNUS (4+ em linha) ───────────────────── */
+.cell.matched-bonus {
+  animation: crack-egg-bonus 0.45s ease forwards;
+}
+
+@keyframes crack-egg-bonus {
+  0%   { transform: scale(1);    opacity: 1; filter: none; }
+  20%  { transform: scale(1.4);  opacity: 1; filter: brightness(2) saturate(2) hue-rotate(30deg); }
+  50%  { transform: scale(1.2) rotate(25deg); filter: brightness(1.8) saturate(3); }
+  80%  { transform: scale(0.5);  opacity: 0.4; }
+  100% { transform: scale(0);    opacity: 0; }
+}
+
+/* ══════════════════════════════════════════════════
+   ECRÃ FINAL (game-overlay)
+   ══════════════════════════════════════════════════ */
+
+#game-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(63, 37, 0, 0.72);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#game-modal {
+  background: whitesmoke;
+  border-radius: 24px;
+  border: 4px solid #00296B;
+  padding: 40px 48px;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 32, 137, 0.35);
+  animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modal-pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.modal-emoji {
+  font-size: 50px;
+  margin: 0 0 8px;
+}
+
+#game-modal h2 {
+  font-size: 25px;
+  font-weight: 900;
+  color: darkblue;
+  margin: 0 0 8px;
+}
+
+/* Label da configuração activa (ex.: "Difícil") */
+.modal-config {
+  font-size: 12px;
+  font-weight: 700;
+  color: #CC4520;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+}
+
+.modal-score,
+.modal-time {
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+.modal-score strong,
+.modal-time strong {
+  color: #CC4520;
+  font-weight: 800;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.modal-buttons button {
+  background: #1a2560;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.modal-buttons button:hover {
+  background: #263080;
+}
+
+.modal-buttons button.secondary {
+  background: #fff;
+  color: #1a2560;
+  border: 2px solid #c8c0f0;
+}
+
+.modal-buttons button.secondary:hover {
+  background: #f0eeff;
+}
+
+/* ══════════════════════════════════════════════════
+   ECRÃ DE ESCOLHA DE DIFICULDADE E MODO
+   ══════════════════════════════════════════════════ */
+
+#difficulty-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(19, 11, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+#difficulty-modal {
+  background: #1a1a2e;
+  border: 2px solid #FFD23F;
+  border-radius: 20px;
+  padding: 40px 50px;
+  max-width: 500px;
+  width: 100%;
+  color: #eee;
+  text-align: center;
+  box-shadow: 0 10px 80px #ffd23f8f;
+  max-height: 92vh;
+  animation: modal-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#difficulty-modal h2 {
+  margin: 0 0 28px;
+  color: #FFD23F;
+}
+
+.active {
+  background: #FFD23F !important;
+  border-color: #ff9f1c !important;
+  color: #1a1a2e !important;
+  transform: translateY(-2px);
+}
+
+.active .diff-desc{
+  color: #00296B;
+}
+
+/* ── Botões de preset ─── */
+
+.difficulty-presets {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.diff-btn {
+  background: #16213e;
+  border: 1px solid #FFD23F;
+  border-radius: 15px;
+  padding: 15px 20px;
+  color: #eee;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 120px;
+  transition: border-color 0.18s, background 0.18s, transform 0.12s;
+}
+
+.diff-btn:hover {
+  border-color: #cf6a22;
+  background: #0f3460;
+  transform: translateY(-2px);
+}
+
+.diff-label {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.diff-desc {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.diff-easy   .diff-label { color: #4ade80; }
+.diff-medium .diff-label { color: #ffc400; }
+.diff-hard   .diff-label { color: #f87171; }
+
+/* ── Secção personalizado ─── */
+
+.difficulty-custom h3 {
+  font-size: 1rem;
+  color: #aaa;
+  border-top: 1px solid #2d2d4e;
+  padding-top: 20px;
+  margin: 20px 0 15px;
+}
+
+.custom-inputs {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.custom-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.custom-field label {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.custom-field input {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 7px;
+  color: #eee;
+  padding: 7px 12px;
+  width: 90px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.custom-field input:focus {
+  outline: none;
+  border-color: #FFD23F;
+}
+
+#btn-custom-start {
+  background: #0f3460;
+  border: 2px solid #FFD23F;
+  border-radius: 9px;
+  color: #eee;
+  padding: 10px 24px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.18s, transform 0.12s, color 0.18s;
+}
+
+#btn-custom-start:hover {
+  background: #FFD23F;
+  color: #0a2241;
+  transform: translateY(-1px);
+}
+
+.custom-error {
+  color: #f87171;
+  font-size: 14px;
+  margin-top: 8px;
+  min-height: 17px;
+}
+
+#no-moves-notice {
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  background: rgba(122, 108, 29, 0.85); 
+  color: #fff; 
+  padding: 20px 40px;
+  border-radius: 20px; 
+  font-size: 30px; 
+  opacity: 0;
+  transition: opacity 0.35s ease; 
+  pointer-events: none; 
+  z-index: 10;
+}
+#no-moves-notice.visible { opacity: 1; }
