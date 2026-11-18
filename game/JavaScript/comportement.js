@@ -694,7 +694,7 @@ function startTimer() {
                 clearInterval(timerInterval);
                 gameOver = true;
                 saveGameStats();
-                showEndScreen(true);
+                showEndScreen('time');
             }
         } else {
             updateTimerDisplay();
@@ -805,7 +805,7 @@ function checkGameOver() {
 
 /**
  * Cria dinamicamente o Modal e overlay de Fim de Jogo ("Game Over" ou "Vitória") com estatísticas e botões de navegação.
- * @param {boolean} won - Estado booleano indicando true se o utilizador venceu o nível, false se perdeu por tempo/movimentos.
+ * @param {boolean|string} won - true if the level was completed, 'time' if the clock ran out in Time Trial, false if the moves ran out.
  */
 function showEndScreen(won) {
     const overlay = document.createElement('div');
@@ -814,8 +814,8 @@ function showEndScreen(won) {
 
     overlay.innerHTML = `
         <div id="game-modal">
-            <p class="modal-emoji">${won ? '🥚🎉' : '😢'}</p>
-            <h2>${won ? 'ALL SCRAMBLED!' : 'GAME OVER'}</h2>
+            <p class="modal-emoji">${won === 'time' ? '⏱️' : won ? '🥚🎉' : '😢'}</p>
+            <h2>${won === 'time' ? "TIME'S UP!" : won ? 'ALL SCRAMBLED!' : 'GAME OVER'}</h2>
             <p class="modal-config">${currentConfig.label}</p>
             <p class="modal-score">Score: <strong>${score_classe.score.toLocaleString('en-GB')}</strong></p>
             <p class="modal-time">Time: <strong>${time|| '0:00'}</strong></p>

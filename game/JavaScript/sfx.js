@@ -95,8 +95,10 @@
       for (const m of muts) {
         for (const node of m.addedNodes) {
           if (node.nodeType === 1 && node.id === 'game-overlay') {
-            const won = /ALL SCRAMBLED/.test(node.textContent);
-            const notes = won ? [523, 659, 784, 1047] : [392, 311];
+            const text = node.textContent;
+            const notes = /ALL SCRAMBLED/.test(text) ? [523, 659, 784, 1047]
+                        : /TIME'S UP|TIME\u2019S UP/.test(text) ? [494, 587, 698]
+                        : [392, 311];
             notes.forEach((f, i) => tone(f, 0.16, 'sine', 0.05, i * 0.11));
           }
         }
