@@ -174,13 +174,13 @@ function showDifficultyScreen() {
                             <label>Grid Size</label>
                             <input type="number" id="custom-size"
                                 min="5" max="10" value="8"
-                                title="Entre 5 e 10">
+                                title="Between 5 and 10">
                         </div>
                         <div class="custom-field">
                             <label>Eggs to eliminate</label>
                             <input type="number" id="custom-eggs"
                                 min="5" max="500" value="20"
-                                title="Entre 5 e 500">
+                                title="Between 5 and 500">
                         </div>
                     </div>
                     <button id="btn-custom-start">▶ Start personalized Grid</button>
@@ -219,11 +219,11 @@ function showDifficultyScreen() {
         const totalEggs  = parseInt(eggsInput.value, 10);
 
         if (isNaN(gridSize) || gridSize < 5 || gridSize > 10) {
-            errorEl.textContent = 'O tamanho deve ser entre 5 e 10.';
+            errorEl.textContent = 'The grid size must be between 5 and 10.';
             return;
         }
         if (isNaN(totalEggs) || totalEggs < 5 || totalEggs > 500) {
-            errorEl.textContent = 'As joias devem ser entre 5 e 500.';
+            errorEl.textContent = 'The number of eggs must be between 5 and 500.';
             return;
         }
 
