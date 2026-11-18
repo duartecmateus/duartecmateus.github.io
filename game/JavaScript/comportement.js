@@ -718,7 +718,7 @@ function updateHUD() {
     if (!currentConfig || !score_classe) return;
     const totalEggs = currentConfig.totalEggs;
 
-    if (scoreEl)     scoreEl.textContent     = score_classe.score.toLocaleString('pt-PT');
+    if (scoreEl)     scoreEl.textContent     = score_classe.score.toLocaleString('en-GB');
     if (eggsCountEl) eggsCountEl.textContent = score_classe.eggsScrambled;
     if (eggsBarEl)   eggsBarEl.style.width   = `${(score_classe.eggsScrambled / totalEggs) * 100}%`;
 
@@ -817,13 +817,12 @@ function showEndScreen(won) {
             <p class="modal-emoji">${won ? '🥚🎉' : '😢'}</p>
             <h2>${won ? 'ALL SCRAMBLED!' : 'GAME OVER'}</h2>
             <p class="modal-config">${currentConfig.label}</p>
-            <p class="modal-score">Score: <strong>${score_classe.score.toLocaleString('pt-PT')}</strong></p>
+            <p class="modal-score">Score: <strong>${score_classe.score.toLocaleString('en-GB')}</strong></p>
             <p class="modal-time">Time: <strong>${time|| '0:00'}</strong></p>
             <div class="modal-buttons">
-                <button id="modal-btn-restart">↺ JOGAR NOVAMENTE</button>
-                <button class="secondary" id="modal-btn-change">🎲 MUDAR DIFICULDADE</button>
-                <button class="secondary" id="modal-btn-leaderboard">🏆 LEADERBOARD</button>
-                <button class="secondary" id="modal-btn-quit">✕ SAIR</button>
+                <button id="modal-btn-restart">↺ PLAY AGAIN</button>
+                <button class="secondary" id="modal-btn-change">🎲 CHANGE DIFFICULTY</button>
+                <button class="secondary" id="modal-btn-quit">✕ EXIT</button>
             </div>
         </div>
     `;
@@ -841,14 +840,9 @@ function showEndScreen(won) {
         restartGame(true);
     });
 
-    /* Sair */
+    /* Exit: back to the site homepage */
     overlay.querySelector('#modal-btn-quit').addEventListener('click', () => {
-        window.location.href = './home.html';
-    });
-
-    /* Leaderboard */
-    overlay.querySelector('#modal-btn-leaderboard').addEventListener('click', () => {
-        window.location.href = './history.html#leader';
+        window.location.href = '../';
     });
 }
 
@@ -985,7 +979,7 @@ function saveGameStats() {
     localStorage.setItem('users', JSON.stringify(users));
     localStorage.setItem('loggedInUser', JSON.stringify(users[userIndex]));
 
-    const name = loggedInUser.username || loggedInUser.email || 'Anónimo';
+    const name = loggedInUser.username || loggedInUser.email || 'Anonymous';
     saveToLeaderboard(currentConfig, {
         name,
         score: score_classe.score,
